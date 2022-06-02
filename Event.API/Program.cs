@@ -1,4 +1,14 @@
+using Event.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+//Add database context
+builder.Services.AddDbContext<EventContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetValue<string>("ConnectionString"),
+    x => x.MigrationsAssembly(typeof(EventContext).Assembly.FullName));
+});
 
 // Add services to the container.
 
