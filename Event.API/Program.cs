@@ -1,3 +1,5 @@
+using Event.API.Config;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +8,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Cosmos DB for application data
+builder.Services.SetupCosmosDb(builder.Configuration);
 
 var app = builder.Build();
 
