@@ -1,43 +1,57 @@
-﻿using Event.Domain.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Event.Infrastructure.EntityConfigurations
 {
-    class EventEntityTypeConfiguration : IEntityTypeConfiguration<EventList>
+    class EventEntityTypeConfiguration : IEntityTypeConfiguration<Domain.Models.EventAggregate.Event>
     {
-        public void Configure(EntityTypeBuilder<EventList> configuration)
+        public void Configure(EntityTypeBuilder<Domain.Models.EventAggregate.Event> configuration)
         {
             configuration.HasKey(x => x.Id);
 
-            configuration.Property(x => x.EventName)
+            configuration.Property(o => o.Id)
+                .UseHiLo("eventseq");
+
+            configuration.Property(x => x.Name)
                 .IsRequired()
                 .HasMaxLength(100);
-
-            configuration.Property(x => x.StartTime)
-                .IsRequired();
-
-            configuration.Property(x => x.Location)
-                .IsRequired()
-                .HasMaxLength(200);
 
             configuration.Property(x => x.GroupId)
                 .IsRequired();
 
-            configuration.Property(x => x.GroupName)
-                .IsRequired()
-                .HasMaxLength(100);
+            configuration.Property(x => x.StartTime)
+                .IsRequired();
 
-            configuration.Property(x => x.ThumbnailImagePath)
+            configuration.Property(x => x.EndTime)
+                .IsRequired();
+
+            configuration.Property(x => x.TotalCapacity)
+                .IsRequired();
+
+            configuration.Property(x => x.IsOnlineEvent)
                 .IsRequired()
-                .HasMaxLength(200);
+                .HasMaxLength(10000);
 
             configuration.Property(x => x.NoOfPeopleGoing)
                 .IsRequired()
                 .HasMaxLength(1000);
 
-            configuration.Property(x => x.IsOnlineEvent)
+            configuration.Property(x => x.IsCancelled)
                 .IsRequired();
+
+            configuration.Property(x => x.ThumbnailImagePath)
+                .HasMaxLength(200);
+
+            configuration
+            .OwnsOne(o => o.Location, a =>
+            {
+                a.Property<int>("EventId")
+                .UseHiLo("eventseq");
+                a.WithOwner();
+            });
+
+            var navigation = configuration.Metadata.FindNavigation(nameof(Domain.Models.EventAggregate.Event.Participants));
+            navigation.SetPropertyAccessMode(PropertyAccessMode.Field);
         }
     }
 }
