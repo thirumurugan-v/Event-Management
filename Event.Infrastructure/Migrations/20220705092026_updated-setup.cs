@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Event.Infrastructure.Migrations
 {
-    public partial class Initialsetup : Migration
+    public partial class updatedsetup : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -38,11 +38,11 @@ namespace Event.Infrastructure.Migrations
                     Location_ZipCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Location_Latitude = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Location_Longitude = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    IsActive = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedDateTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     CreatedById = table.Column<int>(type: "int", nullable: false),
-                    ModifiedDateTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    ModifiedById = table.Column<int>(type: "int", nullable: false)
+                    ModifiedDateTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    ModifiedById = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -68,13 +68,12 @@ namespace Event.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     EventId = table.Column<int>(type: "int", nullable: false),
-                    ParticipationStatusId1 = table.Column<int>(type: "int", nullable: false),
                     ParticipationStatusId = table.Column<int>(type: "int", nullable: false),
-                    IsActive = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedDateTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     CreatedById = table.Column<int>(type: "int", nullable: false),
-                    ModifiedDateTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    ModifiedById = table.Column<int>(type: "int", nullable: false)
+                    ModifiedDateTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    ModifiedById = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -86,8 +85,8 @@ namespace Event.Infrastructure.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_EventParticipants_ParticipationStatus_ParticipationStatusId1",
-                        column: x => x.ParticipationStatusId1,
+                        name: "FK_EventParticipants_ParticipationStatus_ParticipationStatusId",
+                        column: x => x.ParticipationStatusId,
                         principalTable: "ParticipationStatus",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -99,9 +98,9 @@ namespace Event.Infrastructure.Migrations
                 column: "EventId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EventParticipants_ParticipationStatusId1",
+                name: "IX_EventParticipants_ParticipationStatusId",
                 table: "EventParticipants",
-                column: "ParticipationStatusId1");
+                column: "ParticipationStatusId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

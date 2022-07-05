@@ -21,12 +21,6 @@ namespace Event.Infrastructure.EntityConfigurations
                 .IsRequired();
 
             configuration
-                .Property<int>("_participationStatusId")
-                .UsePropertyAccessMode(PropertyAccessMode.Field)
-                .HasColumnName("ParticipationStatusId")
-                .IsRequired();
-
-            configuration
                 .HasOne(o => o.ParticipationStatus)
                 .WithMany()
                 .HasForeignKey("ParticipationStatusId");

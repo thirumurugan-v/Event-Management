@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Event.Infrastructure.Migrations
 {
     [DbContext(typeof(EventContext))]
-    [Migration("20220704130302_Initial-setup")]
-    partial class Initialsetup
+    [Migration("20220705134235_updated-event-table-columns")]
+    partial class updatedeventtablecolumns
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,8 +50,12 @@ namespace Event.Infrastructure.Migrations
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("IsActive")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("GroupName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsCancelled")
                         .HasColumnType("bit");
@@ -60,10 +64,10 @@ namespace Event.Infrastructure.Migrations
                         .HasMaxLength(10000)
                         .HasColumnType("bit");
 
-                    b.Property<int>("ModifiedById")
+                    b.Property<int?>("ModifiedById")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset>("ModifiedDateTime")
+                    b.Property<DateTimeOffset?>("ModifiedDateTime")
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Name")
@@ -76,14 +80,12 @@ namespace Event.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("OnlineEventUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTimeOffset>("StartTime")
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("ThumbnailImagePath")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -112,13 +114,13 @@ namespace Event.Infrastructure.Migrations
                     b.Property<int>("EventId")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("IsActive")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
-                    b.Property<int>("ModifiedById")
+                    b.Property<int?>("ModifiedById")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset>("ModifiedDateTime")
+                    b.Property<DateTimeOffset?>("ModifiedDateTime")
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("Name")
@@ -127,12 +129,7 @@ namespace Event.Infrastructure.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<int>("ParticipationStatusId")
-                        .HasColumnType("int")
-                        .HasColumnName("ParticipationStatusId1");
-
-                    b.Property<int>("_participationStatusId")
-                        .HasColumnType("int")
-                        .HasColumnName("ParticipationStatusId");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
