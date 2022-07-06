@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Event.Infrastructure.Migrations
 {
     [DbContext(typeof(EventContext))]
-    [Migration("20220705134235_updated-event-table-columns")]
-    partial class updatedeventtablecolumns
+    [Migration("20220706121109_updated-identity-coln")]
+    partial class updatedidentitycoln
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,7 +36,7 @@ namespace Event.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseHiLo(b.Property<int>("Id"), "eventseq");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("CreatedById")
                         .HasColumnType("int");
@@ -103,7 +103,7 @@ namespace Event.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseHiLo(b.Property<int>("Id"), "eventparticipationseq");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("CreatedById")
                         .HasColumnType("int");
@@ -164,7 +164,7 @@ namespace Event.Infrastructure.Migrations
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("int");
 
-                            SqlServerPropertyBuilderExtensions.UseHiLo(b1.Property<int>("EventId"), "eventseq");
+                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<int>("EventId"), 1L, 1);
 
                             b1.Property<string>("City")
                                 .IsRequired()

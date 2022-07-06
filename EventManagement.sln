@@ -3,13 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event.API", "Event.API\Event.API.csproj", "{C369DB42-4460-4F8B-8FC2-D7E501792BBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Event.API", "Event.API\Event.API.csproj", "{C369DB42-4460-4F8B-8FC2-D7E501792BBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event.Domain", "Event.Domain\Event.Domain.csproj", "{1F484EA7-0FD4-4B44-8770-9F2A730EEC39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Event.Domain", "Event.Domain\Event.Domain.csproj", "{1F484EA7-0FD4-4B44-8770-9F2A730EEC39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event.Infrastructure", "Event.Infrastructure\Event.Infrastructure.csproj", "{29BE293C-922C-4BCF-8434-9F0CCCA1CDE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Event.Infrastructure", "Event.Infrastructure\Event.Infrastructure.csproj", "{29BE293C-922C-4BCF-8434-9F0CCCA1CDE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Event.UnitTest", "Event.UnitTest\Event.UnitTest.csproj", "{ED3BF6EB-578E-4E71-AB9E-7E2D817D9862}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Event.UnitTest", "Event.UnitTest\Event.UnitTest.csproj", "{ED3BF6EB-578E-4E71-AB9E-7E2D817D9862}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SeedData", "SeedData", "{A1A04B30-00FA-4CA8-B0D5-3B17D246CFB0}"
+	ProjectSection(SolutionItems) = preProject
+		Data.sql = Data.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

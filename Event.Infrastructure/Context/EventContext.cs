@@ -1,7 +1,6 @@
 ﻿using Event.Infrastructure.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
 using Event.Domain.Models.EventAggregate;
-using Event.Domain.Models;
 
 namespace Event.Infrastructure.Context
 {
@@ -21,6 +20,9 @@ namespace Event.Infrastructure.Context
             modelBuilder.ApplyConfiguration(new EventEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new EventParticipantEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new ParticipationStatusEntityTypeConfiguration());
+
+            modelBuilder.Entity<Domain.Models.EventAggregate.Event>().Property(x => x.Id).UseIdentityColumn();
+            modelBuilder.Entity<EventParticipant>().Property(x => x.Id).UseIdentityColumn();
         }
     }
 }

@@ -46,7 +46,8 @@ namespace Event.Infrastructure.EntityConfigurations
             .OwnsOne(o => o.Location, a =>
             {
                 a.Property<int>("EventId")
-                .UseHiLo("eventseq");
+                .UseHiLo("eventseq").UseIdentityColumn();
+                //a.OwnsOne(x => x.ZipCode, x => { x.Property<int>("EventAddressId").UseHiLo("seq"); }).WithOwner();
                 a.WithOwner();
             });
 

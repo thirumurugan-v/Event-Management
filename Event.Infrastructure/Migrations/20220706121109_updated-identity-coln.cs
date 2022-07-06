@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Event.Infrastructure.Migrations
 {
-    public partial class updatedsetup : Migration
+    public partial class updatedidentitycoln : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -21,17 +21,19 @@ namespace Event.Infrastructure.Migrations
                 name: "Events",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     GroupId = table.Column<int>(type: "int", nullable: false),
+                    GroupName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StartTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     EndTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     TotalCapacity = table.Column<int>(type: "int", nullable: false),
                     IsOnlineEvent = table.Column<bool>(type: "bit", maxLength: 10000, nullable: false),
-                    OnlineEventUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    OnlineEventUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NoOfPeopleGoing = table.Column<int>(type: "int", maxLength: 1000, nullable: false),
                     IsCancelled = table.Column<bool>(type: "bit", nullable: false),
-                    ThumbnailImagePath = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    ThumbnailImagePath = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     Location_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Location_City = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Location_Country = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -65,7 +67,8 @@ namespace Event.Infrastructure.Migrations
                 name: "EventParticipants",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     EventId = table.Column<int>(type: "int", nullable: false),
                     ParticipationStatusId = table.Column<int>(type: "int", nullable: false),

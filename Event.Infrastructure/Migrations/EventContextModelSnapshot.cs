@@ -34,7 +34,7 @@ namespace Event.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseHiLo(b.Property<int>("Id"), "eventseq");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("CreatedById")
                         .HasColumnType("int");
@@ -101,7 +101,7 @@ namespace Event.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseHiLo(b.Property<int>("Id"), "eventparticipationseq");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int>("CreatedById")
                         .HasColumnType("int");
@@ -162,7 +162,7 @@ namespace Event.Infrastructure.Migrations
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("int");
 
-                            SqlServerPropertyBuilderExtensions.UseHiLo(b1.Property<int>("EventId"), "eventseq");
+                            SqlServerPropertyBuilderExtensions.UseIdentityColumn(b1.Property<int>("EventId"), 1L, 1);
 
                             b1.Property<string>("City")
                                 .IsRequired()
