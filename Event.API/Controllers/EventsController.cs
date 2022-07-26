@@ -18,8 +18,8 @@ namespace Event.API.Controllers
 
         [Route("GetEvents")]
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<EventDto>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<EventDto>>> GetEventsAsync(string city)
+        [ProducesResponseType(typeof(EventSearchResult), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<EventSearchResult>> GetEventsAsync(string city)
         {
             var events = await _eventService.GetEvents(city);
 

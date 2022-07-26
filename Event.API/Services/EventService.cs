@@ -13,15 +13,15 @@ namespace Event.API.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IEnumerable<EventDto>> GetEvents(string city)
+        public async Task<EventSearchResult> GetEvents(string city)
         {
-            var result = new List<EventDto>();
+            var result = new EventSearchResult();
 
             var events = await _unitOfWork.EventRepository.GetEventsAsync(city ?? "Stockholm", 0, 20);
 
             foreach(var item in events)
             {
-                result.Add(EventDto.MapToDto(item));
+                result.Events.Add(EventDto.MapToDto(item));
             }
 
             return result;

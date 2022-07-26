@@ -26,4 +26,9 @@
             };
         }
     }
+
+    public class EventSearchResult
+    {
+        public List<EventDto> Events { get; set; } = new List<EventDto>();
+    }
 }
