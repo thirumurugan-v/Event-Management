@@ -1,6 +1,6 @@
 ﻿using Event.API.DTOs.Event;
 using Event.API.Services.Interface;
-using Event.Domain.Models;
+using Event.Domain.Models.Common.Interface;
 
 namespace Event.API.Services
 {

@@ -1,4 +1,5 @@
 ﻿using Event.Domain.Models;
+using Event.Domain.Models.Common.Interface;
 using Event.Infrastructure.Context;
 using Event.Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,7 +18,8 @@ namespace Event.Infrastructure.Extensions
                 var context = f.GetService<EventContext>();
                 return new UnitOfWork(
                     context,
-                    new EventRepository(context)
+                    new EventRepository(context),
+                    new CityRepository(context)
                 );
             });
             return serviceCollection;

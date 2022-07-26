@@ -1,4 +1,6 @@
-﻿namespace Event.Domain.Models.EventAggregate
+﻿using Event.Domain.Models.Common.Interface;
+
+namespace Event.Domain.Models.EventAggregate
 {
     public interface IEventRepository : IRepository<Event>
     {

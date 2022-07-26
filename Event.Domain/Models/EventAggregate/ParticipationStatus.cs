@@ -1,4 +1,5 @@
 ﻿using Event.Domain.Exceptions;
+using Event.Domain.Models.Common;
 
 namespace Event.Domain.Models.EventAggregate
 {

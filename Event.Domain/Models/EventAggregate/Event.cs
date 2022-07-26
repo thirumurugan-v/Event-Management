@@ -1,4 +1,7 @@
-﻿namespace Event.Domain.Models.EventAggregate
+﻿using Event.Domain.Models.Common;
+using Event.Domain.Models.Common.Interface;
+
+namespace Event.Domain.Models.EventAggregate
 {
     public class Event : BaseEntity, IAggregateRoot
     {

@@ -1,4 +1,6 @@
-﻿namespace Event.Domain.Models.EventAggregate
+﻿using Event.Domain.Models.Common;
+
+namespace Event.Domain.Models.EventAggregate
 {
     public class EventParticipant : BaseEntity
     {

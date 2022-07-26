@@ -1,7 +1,6 @@
-﻿using Event.Domain.Models;
+﻿using Event.Domain.Models.Common.Interface;
 using Event.Domain.Models.EventAggregate;
 using Event.Infrastructure.Context;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 namespace Event.Infrastructure.Repositories
