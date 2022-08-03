@@ -22,11 +22,11 @@ namespace Event.API.Controllers
         /// <param name="city">Filter by the city</param>
         /// <returns></returns>
         [Route("GetEvents")]
-        [HttpGet]
+        [HttpPost]
         [ProducesResponseType(typeof(EventSearchResult), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<EventSearchResult>> GetEventsAsync(string city)
+        public async Task<ActionResult<EventSearchResult>> GetEventsAsync(EventSearchRequest searchRequest)
         {
-            var events = await _eventService.GetEvents(city);
+            var events = await _eventService.GetEvents(searchRequest);
 
             return Ok(events);
         }

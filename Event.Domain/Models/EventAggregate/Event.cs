@@ -6,6 +6,7 @@ namespace Event.Domain.Models.EventAggregate
     public class Event : BaseEntity, IAggregateRoot
     {
         public string Name { get; private set; } = string.Empty;
+        public string Description { get; private set; } = string.Empty;
         public int GroupId { get; private set; }
         public string GroupName { get; private set; } = string.Empty;
         public DateTimeOffset StartTime { get; private set; }

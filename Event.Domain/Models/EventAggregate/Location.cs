@@ -6,6 +6,7 @@ namespace Event.Domain.Models.EventAggregate
     {
         public string Name { get; private set; }
         public string City { get; private set; }
+        public int LocationId { get; private set; }
         public string Country { get; private set; }
         public string ZipCode { get; private set; }
         public decimal Latitude { get; private set; }
@@ -13,10 +14,11 @@ namespace Event.Domain.Models.EventAggregate
 
         public Location() { }
 
-        public Location(string name, string city, string country, string zipcode, decimal latitude, decimal longitude)
+        public Location(string name, string city, int locationId, string country, string zipcode, decimal latitude, decimal longitude)
         {
             Name = name;
             City = city;
+            LocationId = locationId;
             Country = country;
             ZipCode = zipcode;
             Latitude = latitude;
@@ -28,6 +30,7 @@ namespace Event.Domain.Models.EventAggregate
             // Using a yield return statement to return each element one at a time
             yield return Name;
             yield return City;
+            yield return LocationId;
             yield return Country;
             yield return ZipCode;
             yield return Latitude;

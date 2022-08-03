@@ -16,6 +16,10 @@ namespace Event.Infrastructure.EntityConfigurations
                 .IsRequired()
                 .HasMaxLength(100);
 
+            configuration.Property(x => x.Description)
+                .IsRequired()
+                .HasMaxLength(4000);
+
             configuration.Property(x => x.GroupId)
                 .IsRequired();
 

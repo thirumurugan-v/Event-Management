@@ -4,6 +4,6 @@ namespace Event.API.Services.Interface
 {
     public interface IEventService
     {
-        Task<EventSearchResult> GetEvents(string city);
+        Task<EventSearchResult> GetEvents(EventSearchRequest searchRequest);
     }
 }
