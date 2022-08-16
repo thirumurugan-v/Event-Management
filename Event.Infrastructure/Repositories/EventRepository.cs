@@ -25,6 +25,7 @@ namespace Event.Infrastructure.Repositories
 
         public Task<List<Domain.Models.EventAggregate.Event>> GetEventsAsync(int skip, int take)
         {
+            // TO-DO add category filter
             var events = _context.Events.Where(x => (string.IsNullOrEmpty(SearchKey) || (x.Name.Contains(SearchKey) || x.Description.Contains(SearchKey)))
                 && (LocationId == 0 || x.Location.LocationId == LocationId)
                 && x.StartTime > StartDateTime

@@ -19,7 +19,8 @@ namespace Event.Infrastructure.Extensions
                 return new UnitOfWork(
                     context,
                     new EventRepository(context),
-                    new CityRepository(context)
+                    new CityRepository(context),
+                    new CategoryRepository(context)
                 );
             });
             return serviceCollection;

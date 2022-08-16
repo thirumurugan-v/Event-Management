@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Event.Domain.Models.EventAggregate;
 using Event.Domain.Models.Master.Location;
 using Event.Infrastructure.EntityConfigurations.Master;
+using Event.Domain.Models.Master.Category;
 
 namespace Event.Infrastructure.Context
 {
@@ -19,6 +20,7 @@ namespace Event.Infrastructure.Context
 
         // Master tables
         public DbSet<City> Cities { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -27,6 +29,7 @@ namespace Event.Infrastructure.Context
             modelBuilder.ApplyConfiguration(new ParticipationStatusEntityTypeConfiguration());
 
             modelBuilder.ApplyConfiguration(new CityEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new CategoryEntityTypeConfiguration());
 
             modelBuilder.Entity<Domain.Models.EventAggregate.Event>().Property(x => x.Id).UseIdentityColumn();
             modelBuilder.Entity<EventParticipant>().Property(x => x.Id).UseIdentityColumn();

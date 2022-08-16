@@ -1,4 +1,5 @@
 ﻿using Event.Domain.Models.EventAggregate;
+using Event.Domain.Models.Master.Category;
 using Event.Domain.Models.Master.Location;
 
 namespace Event.Domain.Models.Common.Interface
@@ -7,6 +8,7 @@ namespace Event.Domain.Models.Common.Interface
     {
         IEventRepository EventRepository { get; set; }
         ICityRepository CityRepository { get; set; }
+        ICategoryRepository CategoryRepository { get; set; }
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }
