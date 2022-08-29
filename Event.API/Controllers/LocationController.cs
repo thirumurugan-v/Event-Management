@@ -26,11 +26,19 @@ namespace Event.API.Controllers
         [Route("Get")]
         [HttpGet]
         [ProducesResponseType(typeof(LocationDto), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.BadRequest)]
         public async Task<ActionResult<LocationDto>> GetLocationsAsync(string searchText)
         {
-            var locations = await _locationService.GetLocations(searchText);
+            try
+            {
+                var locations = await _locationService.GetLocations(searchText);
 
-            return Ok(locations);
+                return Ok(locations);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

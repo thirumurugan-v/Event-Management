@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Event.Infrastructure.EntityConfigurations
+namespace Event.Infrastructure.EntityConfigurations.Event
 {
     class EventEntityTypeConfiguration : IEntityTypeConfiguration<Domain.Models.EventAggregate.Event>
     {

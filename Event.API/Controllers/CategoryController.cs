@@ -23,11 +23,19 @@ namespace Event.API.Controllers
         [Route("Get")]
         [HttpGet]
         [ProducesResponseType(typeof(CategoryDto), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.BadRequest)]
         public async Task<ActionResult<List<CategoryDto>>> GetCategoriesAsync()
         {
-            var locations = await _categoryService.GetCategories();
+            try
+            {
+                var locations = await _categoryService.GetCategories();
 
-            return Ok(locations);
+                return Ok(locations);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

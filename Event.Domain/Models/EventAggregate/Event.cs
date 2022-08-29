@@ -1,5 +1,7 @@
 ﻿using Event.Domain.Models.Common;
 using Event.Domain.Models.Common.Interface;
+using Event.Domain.Models.GroupAggregate;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Event.Domain.Models.EventAggregate
 {
@@ -21,5 +23,7 @@ namespace Event.Domain.Models.EventAggregate
 
         private readonly List<EventParticipant> _participants;
         public IReadOnlyCollection<EventParticipant> Participants => _participants;
+
+        public Group Group { get; private set; }
     }
 }

@@ -42,6 +42,5 @@ namespace Event.Domain.Models.EventAggregate
 
             return state;
         }
-
     }
 }

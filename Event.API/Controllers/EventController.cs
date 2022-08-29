@@ -24,11 +24,19 @@ namespace Event.API.Controllers
         [Route("GetEvents")]
         [HttpPost]
         [ProducesResponseType(typeof(EventSearchResult), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(string), (int)HttpStatusCode.BadRequest)]
         public async Task<ActionResult<EventSearchResult>> GetEventsAsync(EventSearchRequest searchRequest)
         {
-            var events = await _eventService.GetEvents(searchRequest);
+            try
+            {
+                var events = await _eventService.GetEvents(searchRequest);
 
-            return Ok(events);
+                return Ok(events);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

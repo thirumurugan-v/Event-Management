@@ -1,12 +1,12 @@
-﻿using Event.Domain.Models.EventAggregate;
+﻿using Event.Domain.Models.GroupAggregate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Event.Infrastructure.EntityConfigurations
+namespace Event.Infrastructure.EntityConfigurations.Master
 {
-    public class ParticipationStatusEntityTypeConfiguration : IEntityTypeConfiguration<ParticipationStatus>
+    public class MembershipStatusEntityTypeConfiguration : IEntityTypeConfiguration<MembershipStatus>
     {
-        public void Configure(EntityTypeBuilder<ParticipationStatus> configuration)
+        public void Configure(EntityTypeBuilder<MembershipStatus> configuration)
         {
             configuration.HasKey(o => o.Id);
 
