@@ -1,7 +1,10 @@
 using Event.API.Services;
 using Event.API.Services.Interface;
+using Event.Domain.Models.GroupAggregate;
+using Event.Domain.Models.GroupAggregate.Validator;
 using Event.Infrastructure.Context;
 using Event.Infrastructure.Extensions;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +24,9 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IEventService, EventService>();
 builder.Services.AddScoped<ILocationService, LocationService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+
+builder.Services.AddScoped<IValidator<Group>, GroupValidator>();
+
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
